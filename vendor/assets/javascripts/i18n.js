@@ -14,7 +14,7 @@ I18n.defaultSeparator = ".";
 I18n.locale = null;
 
 // Set the placeholder format. Accepts `{{placeholder}}` and `%{placeholder}`.
-I18n.PLACEHOLDER = /(?:\{\{|%\{)(.*?)(?:\}\}?)/gm;
+I18n.PLACEHOLDER = /(?:\{\{|%\{)\s*(.*?)\s*(?:\}\}?)/gm;
 
 I18n.pluralizationRules = {
   en: rule = function (n) { return n == 0 ? ["zero", "none", "other"] : n == 1 ? "one" : "other"; }

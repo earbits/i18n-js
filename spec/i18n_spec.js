@@ -14,7 +14,8 @@ describe("I18n.js", function(){
           name: "Hello {{name}}!"
         },
         profile: {
-          details: "{{name}} is {{age}}-years old"
+          details: "{{name}} is {{age}}-years old",
+          home_town: "{{ name }} is from {{ city }}"
         },
         inbox: {
           one: "You have {{count}} message",
@@ -160,6 +161,12 @@ describe("I18n.js", function(){
     actual = I18n.t("profile.details", {name: "John Doe", age: 27});
     expect(actual).toBeEqualTo("John Doe is 27-years old");
   });
+  
+  specify("translation excludes whitespace in interpolation", function(){
+    actual = I18n.t("profile.home_town", {name: "John Doe", city: "London"});
+    expect(actual).toBeEqualTo("John Doe is from London");
+  });
+
 
   specify("translation with count option", function(){
     expect(I18n.t("inbox", {count: 0})).toBeEqualTo("You have no messages");
